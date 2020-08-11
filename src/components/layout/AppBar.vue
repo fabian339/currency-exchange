@@ -1,7 +1,7 @@
 <template>
     <v-app-bar
       app
-      color="primary"
+      color="#5f9ea0"
       dark
     >
       <v-toolbar-title>Dr. Peso</v-toolbar-title>

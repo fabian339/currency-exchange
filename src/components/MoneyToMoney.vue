@@ -12,10 +12,17 @@
           prefix="$"
           type="number"
         ></v-text-field>
-        <p class="country"> {{fromCurrency}} </p>
+        <p class="country"> {{ fromCountry.alpha3Code }} </p>
+
+        <v-img
+          class="white--text align-end"
+          height="50px"
+          width="80px"
+          v-bind:src="fromCountry.flag"
+        />
       </v-col>
     
-      <v-btn icon color="green" :large="true">
+      <v-btn icon color="green" :x-large="true">
         <v-icon>mdi-cached</v-icon>
       </v-btn>
 
@@ -26,16 +33,23 @@
           prefix="$"
           type="number"
         ></v-text-field>
-        <p class="country"> {{toCurrency}} </p>
+        <p class="country"> {{ toCountry.alpha3Code }} </p>
+        <v-img
+          class="white--text align-end"
+          height="50px"
+          width="80px"
+          v-bind:src="toCountry.flag"
+        />
       </v-col>
     </div>
   </v-card>
 </template>
 
 <script>
+  // import store from '../store.js'
   export default {
     name: 'MoneyToMoney',
-    props: ['fromCurrency', 'toCurrency'],
+    props: ['fromCountry', 'toCountry'],
 
     data: () => ({
     })
@@ -46,6 +60,7 @@
 <style scoped>
   .country {
     font-size: 35px;
+    text-align: initial;
   }
   .cardContainer {
     display: inline-flex;
