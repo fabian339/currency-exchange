@@ -27,13 +27,13 @@
         <v-container class="grey lighten-5">
           <v-row no-gutters>
             <v-col order="last">
-              <MoneyToMoney  :fromCountry="fromCountryUSA" :toCountry="toCountryDOM" />
+              <MoneyToMoney  fromCountry="USA" toCountry="DOM" />
             </v-col>
             <v-col>
-              <MoneyToMoney  :fromCountry="fromCountryUSA" :toCountry="toCountryCHN" />     
+              <MoneyToMoney  fromCountry="USA" toCountry="CHN" />     
             </v-col>
           <v-col order="first">
-              <MoneyToMoney  :fromCountry="fromCountryUSA" :toCountry="toCountryGBR" />
+              <MoneyToMoney  fromCountry="USA" toCountry="GBR" />
           </v-col>
         </v-row>
       </v-container>
@@ -67,9 +67,6 @@
 <script>
 // @ is an alias to /src
 import MoneyToMoney from '@/components/MoneyToMoney.vue'
-import axios from 'axios'
-
-// import {getCountry} from "../store.js";
 
 export default {
   name: 'Home',
@@ -77,33 +74,12 @@ export default {
     MoneyToMoney
   },
   data: () => ({
-    fromCountryUSA: {},
-    toCountryDOM: {},
-    toCountryCHN: {},
-    toCountryGBR: {},
     //
   }),
-  created() {
-    this.getCountry('USA');
-    this.getCountry('DOM');
-    this.getCountry('CHN');
-    this.getCountry('GBR');
-
-  },
-  methods: {
-    getCountry(code){
-      axios.get(`https://restcountries.eu/rest/v2/alpha/${code}`)
-          .then(res => {
-            // console.log(code)
-            const { name, alpha3Code, flag } = res.data;
-            if (code === 'USA') this.fromCountryUSA = { name , alpha3Code, flag};
-            if (code === 'DOM') this.toCountryDOM = { name , alpha3Code, flag};
-            if (code === 'CHN') this.toCountryCHN = { name , alpha3Code, flag};
-            if (code === 'GBR') this.toCountryGBR = { name , alpha3Code, flag};
-          })
-          .catch(err => console.log(err));
-    }
-  },
+  // created() {
+  // },
+  // methods: {
+  // },
 }
 </script>
 
